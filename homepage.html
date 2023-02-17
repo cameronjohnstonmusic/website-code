@@ -1,0 +1,315 @@
+<body>
+
+    <script>
+
+        Squarespace.onInitialize(Y, init1)
+
+
+
+        function init1() {
+
+            var videos = ["https://www.cameronjohnston.xyz/s/yt5sio-args-piece-for-processed-algorthmic-piano-and-video-1080p.mp4", "https://www.cameronjohnston.xyz/s/Screen-Recording-2023-01-26-at-11152-PM-HD-1080p-H264-Proxy-half-size.mov", "https://www.cameronjohnston.xyz/s/Screen-Recording-2023-01-30-at-13338-PM.mov"]
+            var randomIndexVideo = Math.floor(Math.random() * videos.length);
+            var video = videos[randomIndexVideo];
+            var myVideo = document.getElementById("myVideo");
+            myVideo.src = video;
+
+            var laptops = ['https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63e18310bc8c077ec9cc3a48/1675723537020/laptop1.png', 'https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63e183169697106dcaa763f3/1675723543939/laptop2.png']
+            var randomIndexLaptop = Math.floor(Math.random() * laptops.length);
+
+            var laptop = laptops[randomIndexLaptop];
+
+            var myLaptop = document.getElementById("laptop")
+            myLaptop.src = laptop;
+
+            var composers = ['https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63e182f98cf4a24371792881/1675723513560/composer1.png', 'https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63e182ff0d578b703b2ed5da/1675723519731/composer2.png', 'https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63e183048cf4a24371792f9d/1675723524519/composer3.png']
+
+            //var composers = ["https://images.squarespace-cdn.com/content/v1/5a6fccf8d74cff4818ad90a2/f18b6af3-7936-4ad0-a74c-03c5a21aea5b/laptopjpeg?format=1000w", "https://images.squarespace-cdn.com/content/v1/5a6fccf8d74cff4818ad90a2/16bdce60-478b-4717-a900-38f8b5a69f9b/laptop2.png?format=1000w", "https://images.squarespace-cdn.com/content/v1/5a6fccf8d74cff4818ad90a2/8360fdce-ba3e-4c36-bf05-4629466246af/Screenshot+2023-01-30+at+11.29.32+AM.png?format=1000w"]
+            var randomIndexComposer = Math.floor(Math.random() * composers.length);
+
+            var composer = composers[randomIndexComposer];
+
+            var myComposer = document.getElementById("composer")
+            myComposer.src = composer;
+
+            var sounds = ["https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63eac4d4ce5623181979fd5f/1676330197349/sound1.png", "https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63eac4df39daf40fc36ae73f/1676330208773/sound2.png"]
+            var randomIndexSound = Math.floor(Math.random() * sounds.length);
+
+            var sound = sounds[randomIndexSound];
+
+            var mySound = document.getElementById("sound")
+            mySound.src = sound;
+
+            // console.log(randomIndex);
+            //console.log(video);
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+
+
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    } else {
+                        entry.target.classList.remove('show');
+                    }
+
+                });
+
+            });
+
+            const hiddenElements = document.querySelectorAll('.hidden');
+            hiddenElements.forEach((el) => observer.observe(el));
+
+            myVideo.addEventListener("loadedmetadata", function () {
+
+                if (myVideo.autoplay) {
+                    myVideo.play();
+                    myVideo.controls = false;
+                } else {
+                    myVideo.controls = true;
+                };
+
+                myVideo.muted = true;
+                myVideo.loop = true;
+            });
+
+        }
+
+
+
+    </script>
+    <style>
+        section {
+            display: grid;
+            place-items: top;
+            align-content: center;
+            text-align: center;
+
+            min-height: 5vh;
+            display: block;
+        }
+
+        .image-container {
+            overflow: hidden;
+            /* hide any overflowing content */
+            width: 100%;
+            /* set the width of the container */
+            height: 300px;
+            /* set the height of the container */
+
+        }
+
+        .cropped-image {
+            object-fit: cover;
+
+        }
+
+        .hidden {
+            opacity: 0;
+            filter: blur(5px);
+            transform:
+                translateX(-100%);
+            transition: all 1s;
+            transition-delay: 100ms;
+
+        }
+
+        logos {
+            display: flex;
+        }
+
+        .logo:nth-child(2) {
+            transition-delay: 100ms
+        }
+
+        .logo:nth-child(3) {
+            transition-delay: 200ms
+        }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateX(0);
+        }
+
+        .bg-image {
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .text-overlay {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+
+        }
+
+        .text-overlay1 {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .text-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .floating-image:hover {
+            transform: translateX(-10px) translateY(-10px);
+            transition: all 0.5s ease;
+        }
+    </style>
+
+    <section class="hidden floating-image">
+
+        <a href="https://www.cameronjohnston.xyz/highlights/music" class="relative image-container">
+
+
+            <img id='composer' class='bg-image cropped-image' style="filter: blur(1px);">
+
+
+            <div class="text-wrapper">
+                <h2 class="text-overlay "> COMPOSER </h2>
+
+        </a>
+
+
+    </section>
+
+
+    <br>
+    <hr class='hidden'>
+
+
+    <section class="hidden floating-image">
+
+        <a href="https://www.cameronjohnston.xyz/media/live-streaming" class="relative image-container">
+
+
+
+
+            <img class='bg-image cropped-image'
+                src='https://images.squarespace-cdn.com/content/v1/5a6fccf8d74cff4818ad90a2/70c7ef76-2c21-406f-980c-572c8e8f8b62/tempImageiCYHHB.jpg?format=1000w'
+                style="filter: blur(1px);">
+
+
+            <div class="text-wrapper">
+                <h2 class="text-overlay1 "> LIVE STREAM TECH </h2>
+
+        </a>
+
+    </section>
+
+    <br>
+    <hr class='hidden'>
+    <section class="hidden floating-image">
+
+        <a href="https://www.cameronjohnston.xyz/highlights/max" class="relative image-container">
+
+
+            <img id='sound' class='bg-image cropped-image' style="filter: blur(1px);">
+
+
+            <div class="text-wrapper">
+                <h2 class="text-overlay "> SOUND ARTIST </h2>
+
+        </a>
+
+
+
+    </section>
+    <br>
+    <hr class='hidden'>
+    <section class="hidden floating-image">
+
+        <a href="https://www.cameronjohnston.xyz/highlights/videoart" class="relative image-container">
+
+
+            <video autoplay id="myVideo" class='bg-image cropped-image' style="filter: blur(1px);">
+                <!--       <source src="https://www.cameronjohnston.xyz/s/yt5sio-args-piece-for-processed-algorthmic-piano-and-video-1080p.mp4" type="video/mp4"> -->
+            </video>
+
+
+            <div class="text-wrapper">
+                <h2 class="text-overlay1 "> VIDEO ARTIST </h2>
+
+
+        </a>
+    </section>
+    <br>
+    <hr class='hidden '>
+    <section class="hidden floating-image">
+
+        <a href="https://www.cameronjohnston.xyz/albums" class="relative image-container">
+
+
+            <img class='bg-image cropped-image'
+                src='https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63eac508a299f16299dff71b/1676330252119/producer.png'
+                style="filter: blur(1px);">
+
+
+            <div class="text-wrapper">
+                <h2 class="text-overlay1 "> PRODUCER </h2>
+
+        </a>
+
+
+
+    </section>
+    <br>
+    <hr class='hidden'>
+    <section class="hidden floating-image">
+
+        <a href="https://www.cameronjohnston.xyz/programming" class="relative image-container">
+
+
+            <img class='bg-image cropped-image'
+                src='https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63eac4ee26ee86324adf12e4/1676330223142/programmer.png'
+                style="filter: blur(1px);">
+
+
+            <div class="text-wrapper">
+                <h2 class="text-overlay1 "> PROGRAMMER </h2>
+
+        </a>
+
+
+
+    </section>
+    <br>
+
+
+    <hr class='hidden'>
+    <section class='hidden floating-image'>
+        <a href="https://www.cameronjohnston.xyz/director/laptop-ensemble" class="relative image-container">
+            <img id='laptop' class='bg-image cropped-image' style="filter: blur(1px);">
+            <div class="text-wrapper">
+                <h2 class="text-overlay1"> LAPTOP PERFORMER </h2>
+            </div>
+        </a>
+    </section>
+
+
+    <br>
+    <hr class='hidden'>
+    <section class='hidden floating-image'>
+        <a href="https://www.cameronjohnston.xyz/director/new-music-ensemble" class="relative image-container">
+            <img class='bg-image cropped-image'
+                src='https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63e1830bb646bc07630e009b/1675723532190/conductor.png'
+                style="filter: blur(1px);">
+            <div class="text-wrapper">
+                <h2 class="text-overlay1"> CONDUCTOR </h2>
+            </div>
+        </a>
+    </section>
+    <br>
+    <hr class='hidden'>
+
+
+</body>
