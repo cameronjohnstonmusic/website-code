@@ -1,0 +1,105 @@
+<script>
+
+
+
+    Squarespace.onInitialize(Y, init1)
+
+    function init1() {
+        console.log('Script is working');
+        getLatestCommitRepo();
+    }
+
+
+
+
+
+    const username = "cameronjohnstonmusic";
+    const url = `https://api.github.com/users/${username}/repos`;
+
+
+
+
+
+
+
+    const getLatestCommitRepo = async () => {
+        const response = await fetch(url);
+        repositories = await response.json();
+
+
+
+        let latestCommit = null;
+        let latestCommitRepoName = 'Loading';
+        let latestCommitRepoName2 = null;
+        let latestCommitRepoUrl = null;
+
+        for (const repo of repositories) {
+            const commitsUrl = repo.commits_url.replace("{/sha}", "");
+            const commitsResponse = await fetch(commitsUrl);
+            const commits = await commitsResponse.json();
+
+            for (const commit of commits) {
+                if (!latestCommit || commit.commit.author.date > latestCommit.commit.author.date) {
+                    latestCommit = commit;
+                    latestCommitRepoName = repo.name;
+                    latestCommitRepoName2 = repo.name;
+                    latestCommitRepoUrl = repo.html_url;
+                }
+            }
+        }
+
+        console.log(`The most recent commit for ${username} is in the repository: ${latestCommitRepoName}`);
+        console.log(`The repository URL is: ${latestCommitRepoUrl}`);
+
+
+
+        const paragraph = document.getElementById("message");
+        const paragraph2 = document.getElementById("message2");
+
+
+
+
+
+
+        paragraph.innerHTML = "";
+        paragraph.classList.add("link");
+        paragraph.innerHTML = `${paragraph.innerHTML} <a href="${latestCommitRepoUrl}" target="_blank">  ${latestCommitRepoName}</a> `;
+        paragraph2.innerHTML = `${paragraph2.innerHTML} <p class = 'unlink'> Last working on: </p> `;
+
+
+        // append the script to the document's head
+
+    };
+
+</script>
+
+<head>
+    <style>
+        .link {
+            text-decoration: underline;
+            /* add underline */
+        }
+
+        .unlink {
+            text-decoration: none;
+            /* remove underline */
+        }
+    </style>
+</head>
+
+
+
+
+<body>
+
+    <p id="message2"> </p>
+
+
+    <p id='message'> Loading... </p>
+
+
+
+
+
+
+</body>
