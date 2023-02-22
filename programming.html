@@ -1,105 +1,106 @@
-<script>
 
 
+<script> 
+
+ 
 
     Squarespace.onInitialize(Y, init1)
-
-    function init1() {
-        console.log('Script is working');
-        getLatestCommitRepo();
+  
+    function init1 (){
+      console.log('Script is working');
+      getLatestCommitRepo();
     }
-
-
-
-
-
+  
+    
+  
+  
+  
     const username = "cameronjohnstonmusic";
-    const url = `https://api.github.com/users/${username}/repos`;
-
-
-
-
-
-
-
-    const getLatestCommitRepo = async () => {
-        const response = await fetch(url);
-        repositories = await response.json();
-
-
-
-        let latestCommit = null;
-        let latestCommitRepoName = 'Loading';
-        let latestCommitRepoName2 = null;
-        let latestCommitRepoUrl = null;
-
-        for (const repo of repositories) {
-            const commitsUrl = repo.commits_url.replace("{/sha}", "");
-            const commitsResponse = await fetch(commitsUrl);
-            const commits = await commitsResponse.json();
-
-            for (const commit of commits) {
-                if (!latestCommit || commit.commit.author.date > latestCommit.commit.author.date) {
-                    latestCommit = commit;
-                    latestCommitRepoName = repo.name;
-                    latestCommitRepoName2 = repo.name;
-                    latestCommitRepoUrl = repo.html_url;
-                }
-            }
+  const url = `https://api.github.com/users/${username}/repos`;
+  
+    
+    
+    
+    
+  
+  
+  const getLatestCommitRepo = async () => {
+    const response = await fetch(url);
+    const repositories = await response.json();
+  
+    let latestCommit = null;
+    let latestCommitRepoName = 'Loading';
+    let latestCommitRepoUrl = null;
+    let totalCommits = 0;
+    const committedRepos = new Set(); // initialize a Set to store the repositories you have committed to
+  
+    for (const repo of repositories) {
+      const commitsUrl = repo.commits_url.replace("{/sha}", "");
+      const commitsResponse = await fetch(commitsUrl);
+      const commits = await commitsResponse.json();
+  
+      totalCommits += commits.length;
+  
+      for (const commit of commits) {
+        if (commit.author && commit.author.login === username) { // check if the commit was made by you
+          committedRepos.add(repo.name); // add the repository to the Set
         }
-
-        console.log(`The most recent commit for ${username} is in the repository: ${latestCommitRepoName}`);
-        console.log(`The repository URL is: ${latestCommitRepoUrl}`);
-
-
-
-        const paragraph = document.getElementById("message");
-        const paragraph2 = document.getElementById("message2");
-
-
-
-
-
-
-        paragraph.innerHTML = "";
-        paragraph.classList.add("link");
-        paragraph.innerHTML = `${paragraph.innerHTML} <a href="${latestCommitRepoUrl}" target="_blank">  ${latestCommitRepoName}</a> `;
-        paragraph2.innerHTML = `${paragraph2.innerHTML} <p class = 'unlink'> Last working on: </p> `;
-
-
-        // append the script to the document's head
-
-    };
-
-</script>
-
-<head>
-    <style>
-        .link {
-            text-decoration: underline;
-            /* add underline */
+  
+        if (!latestCommit || commit.commit.author.date > latestCommit.commit.author.date) {
+          latestCommit = commit;
+          latestCommitRepoName = repo.name;
+          latestCommitRepoUrl = repo.html_url;
         }
-
+      }
+    }
+  
+    console.log(`The most recent commit for ${username} is in the repository: ${latestCommitRepoName}`);
+    console.log(`The repository URL is: ${latestCommitRepoUrl}`);
+    console.log(`Total number of commits: ${totalCommits}`);
+    console.log(`Number of repositories committed to: ${committedRepos.size}`); // print the size of the Set to get the number of repositories committed to
+  
+    const paragraph = document.getElementById("message");
+    const paragraph2 = document.getElementById("message2");
+    const paragraph3 = document.getElementById("message3");
+  
+    paragraph.innerHTML = "";
+    paragraph.classList.add("link");
+    paragraph.innerHTML = `${paragraph.innerHTML} <a href="${latestCommitRepoUrl}" target="_blank">  ${latestCommitRepoName}</a> `;
+    paragraph2.innerHTML = `${paragraph2.innerHTML} <p class = 'unlink'> He was last working on: </p> `;
+    paragraph3.innerHTML = `${paragraph3.innerHTML} <p class = 'unlink'> Cameron has ${totalCommits} commits across ${committedRepos.size} repos. </p> `;
+  };
+  
+  
+  </script>
+  
+  <head>
+      <style>
+      .link {
+              text-decoration: underline; /* add underline */
+          }
         .unlink {
-            text-decoration: none;
-            /* remove underline */
-        }
-    </style>
-</head>
-
-
-
-
-<body>
-
+              text-decoration: none; /* remove underline */
+          }
+      </style>
+  </head>
+  
+  
+  
+  
+  <body>
+  
+    <p id="message3"></p>
+  
     <p id="message2"> </p>
-
-
-    <p id='message'> Loading... </p>
-
-
-
-
-
-
-</body>
+  
+  
+    <p id = 'message'> Loading... </p>
+  
+    
+    
+    
+   
+  
+    </body>
+  
+    
