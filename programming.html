@@ -63,11 +63,11 @@
     const paragraph2 = document.getElementById("message2");
     const paragraph3 = document.getElementById("message3");
   
-    paragraph.innerHTML = "";
-    paragraph.classList.add("link");
-    paragraph.innerHTML = `${paragraph.innerHTML} <a href="${latestCommitRepoUrl}" target="_blank">  ${latestCommitRepoName}</a> `;
-    paragraph2.innerHTML = `${paragraph2.innerHTML} <p class = 'unlink'> He was last working on: </p> `;
-    paragraph3.innerHTML = `${paragraph3.innerHTML} <p class = 'unlink'> Cameron has ${totalCommits} commits across ${committedRepos.size} repos. </p> `;
+     paragraph2.innerHTML = "";
+    // paragraph.classList.add("link");
+  
+    paragraph2.innerHTML = `${paragraph2.innerHTML} <p class = 'unlink'> He was last working on: <a href="${latestCommitRepoUrl}" target="_blank"style="text-decoration: underline; color: #8c979a";>${latestCommitRepoName}</a>  </p> `;
+    paragraph3.innerHTML = `${paragraph3.innerHTML} <p class = 'unlink'> Cameron has ${totalCommits} commits across <a href="https://github.com/cameronjohnstonmusic?tab=repositories" target="_blank"style="text-decoration: underline; color: #8c979a";>${committedRepos.size} public repos. </a> </p> `;
   };
   
   
@@ -91,10 +91,9 @@
   
     <p id="message3"></p>
   
-    <p id="message2"> </p>
   
   
-    <p id = 'message'> Loading... </p>
+    <p id = 'message2'> Loading... </p>
   
     
     
