@@ -96,12 +96,14 @@
     position: relative;
     width: 100%;
     height: 300px;
+    border-radius: 10px;
     
     transition: all 0.3s ease-in-out;
   }
      .image-container:hover {
    transform: scale(1.05);
        transition: all 0.3s ease-in-out;
+       border-radius: 10px;
   }
 
       .video-container {
@@ -112,14 +114,18 @@
          text-align: center;
         object-fit: contain;
         margin: 0 auto;
+        
   max-width: 100%;
   max-height: 100%;
-    
+    border-radius: 10px;
     transition: all 0.3s ease-in-out;
+        
   }
      .video-container:hover {
    transform: scale(1.05);
+       border-radius: 10px;
        transition: all 0.3s ease-in-out;
+       
   }
 .video-container video {
    object-fit: contain;
@@ -132,7 +138,7 @@
     transform: translate(-50%, -50%);
     object-fit: cover;
     filter: blur(2px);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.5s ease-in-out;
   
   }
 
@@ -142,13 +148,13 @@
   
     object-fit: cover;
     
-  transition: all 0.3s ease-in-out;
+  transition: all 0.5s ease-in-out;
   
   }
 
 .cropped-image:hover {
   filter: blur(0);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.5s ease-in-out;
   
   
   /* remove the blur effect on hover */
@@ -165,6 +171,12 @@
             position: relative;
             z-index: 2;
             text-align: center;
+         backdrop-filter: blur(5px);
+      
+       background-color: rgba(255, 255, 255, 0.5);
+      padding: 10px;
+      display: inline-block;
+         border-radius: 10px;
 
         }
 
@@ -173,6 +185,12 @@
             z-index: 2;
             text-align: center;
             color: white;
+           
+           
+      background-color: rgba(100, 100, 100, 0.5);
+      padding: 10px;
+      display: inline-block;
+          border-radius: 10px;
 
 
           .bg-image {
