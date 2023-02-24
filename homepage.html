@@ -78,105 +78,108 @@
 
 
     </script>
-   <style>
-    section {
-        display: grid;
-        place-items: top;
-        align-content: center;
-        text-align: center;
-        min-height: 5vh;
-        display: block;
-      
-      
-    }
-       
+    <style>
+        section {
+            display: grid;
+            place-items: top;
+            align-content: center;
+            text-align: center;
+            min-height: 5vh;
+            display: block;
 
-  .image-container {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    height: 300px;
-    border-radius: 10px;
-    
-    transition: all 0.3s ease-in-out;
-  }
-     .image-container:hover {
-   transform: scale(1.05);
-       transition: all 0.3s ease-in-out;
-       border-radius: 10px;
-  }
 
-      .video-container {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    height: 300px;
-         text-align: center;
-        object-fit: contain;
-        margin: 0 auto;
-        
-  max-width: 100%;
-  max-height: 100%;
-    border-radius: 10px;
-    transition: all 0.3s ease-in-out;
-        
-  }
-     .video-container:hover {
-   transform: scale(1.05);
-       border-radius: 10px;
-       transition: all 0.3s ease-in-out;
-       
-  }
-.video-container video {
-   object-fit: contain;
-  }
-     
-.cropped-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    filter: blur(2px);
-  transition: all 0.5s ease-in-out;
-  
-  }
+        }
 
-      .cropped-video {
-        position: relative;
-        align-content: center;
-  
-    object-fit: cover;
-    
-  transition: all 0.5s ease-in-out;
-  
-  }
 
-.cropped-image:hover {
-  filter: blur(0);
-  transition: all 0.5s ease-in-out;
-  
-  
-  /* remove the blur effect on hover */
-}
+        .image-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
 
-      .text-wrapper {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .image-container:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        .video-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 300px;
+            text-align: center;
+            object-fit: contain;
+            margin: 0 auto;
+
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+
+        }
+
+        .video-container:hover {
+            transform: scale(1.05);
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+
+        }
+
+        .video-container video {
+            object-fit: contain;
+        }
+
+        .cropped-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: blur(2px);
+            transition: all 0.5s ease-in-out;
+
+        }
+
+        .cropped-video {
+            position: relative;
+            align-content: center;
+
+            object-fit: cover;
+
+            transition: all 0.5s ease-in-out;
+
+        }
+
+        .cropped-image:hover {
+            filter: blur(0);
+            transition: all 0.5s ease-in-out;
+
+
+            /* remove the blur effect on hover */
+        }
+
+        .text-wrapper {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
 
-      .text-overlay {
+        .text-overlay {
             position: relative;
             z-index: 2;
             text-align: center;
-         backdrop-filter: blur(5px);
-      
-       background-color: rgba(255, 255, 255, 0.5);
-      padding: 10px;
-      display: inline-block;
-         border-radius: 10px;
+            backdrop-filter: blur(5px);
+
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 10px;
+            display: inline-block;
+            border-radius: 10px;
 
         }
 
@@ -185,39 +188,36 @@
             z-index: 2;
             text-align: center;
             color: white;
-           
-           
-      background-color: rgba(100, 100, 100, 0.5);
-      padding: 10px;
-      display: inline-block;
-          border-radius: 10px;
 
 
-          .bg-image {
+            background-color: rgba(100, 100, 100, 0.5);
+            padding: 10px;
+            display: inline-block;
+            border-radius: 10px;
+        }
+
+
+        .bg-image {
             background-size: cover;
             background-position: center;
             width: 100%;
             height: 100%;
         }
 
-    .hidden {
-        opacity: 0;
-        filter: blur(5px);
-        transform: translateX(-50px);
-        transition: all 0.3s ease-in-out;
-    }
+        .hidden {
+            opacity: 0;
+            filter: blur(5px);
+            transform: translateX(-50px);
+            transition: all 0.3s ease-in-out;
+        }
 
-           .show {
-        opacity: 1;
-        filter: blur(0px);
-        transform: translateX(0px);
-             transform: scale(1.0);
-    }
-
-  
-   
-
-</style>
+        .show {
+            opacity: 1;
+            filter: blur(0px);
+            transform: translateX(0px);
+            transform: scale(1.0);
+        }
+    </style>
 
 
     <section class="hidden floating-image">
@@ -225,7 +225,7 @@
         <a href="https://www.cameronjohnston.xyz/highlights/music" class="relative image-container">
 
 
-            <img id='composer' class='bg-image cropped-image' >
+            <img id='composer' class='bg-image cropped-image'>
 
 
             <div class="text-wrapper">
@@ -249,8 +249,7 @@
 
 
             <img class='bg-image cropped-image'
-                src='https://images.squarespace-cdn.com/content/v1/5a6fccf8d74cff4818ad90a2/70c7ef76-2c21-406f-980c-572c8e8f8b62/tempImageiCYHHB.jpg?format=1000w'
-                >
+                src='https://images.squarespace-cdn.com/content/v1/5a6fccf8d74cff4818ad90a2/70c7ef76-2c21-406f-980c-572c8e8f8b62/tempImageiCYHHB.jpg?format=1000w'>
 
 
             <div class="text-wrapper">
@@ -285,7 +284,7 @@
         <a href="https://www.cameronjohnston.xyz/highlights/videoart" class="relative video-container">
 
 
-            <video autoplay id="myVideo" class='bg-image cropped-image' >
+            <video autoplay id="myVideo" class='bg-image cropped-image'>
                 <!--       <source src="https://www.cameronjohnston.xyz/s/yt5sio-args-piece-for-processed-algorthmic-piano-and-video-1080p.mp4" type="video/mp4"> -->
             </video>
 
@@ -304,8 +303,7 @@
 
 
             <img class='bg-image cropped-image'
-                src='https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63eac508a299f16299dff71b/1676330252119/producer.png'
-                >
+                src='https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63eac508a299f16299dff71b/1676330252119/producer.png'>
 
 
             <div class="text-wrapper">
@@ -324,8 +322,7 @@
 
 
             <img class='bg-image cropped-image'
-                src='https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63eac4ee26ee86324adf12e4/1676330223142/programmer.png'
-                >
+                src='https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63eac4ee26ee86324adf12e4/1676330223142/programmer.png'>
 
 
             <div class="text-wrapper">
@@ -355,8 +352,7 @@
     <section class='hidden floating-image'>
         <a href="https://www.cameronjohnston.xyz/director/new-music-ensemble" class="relative image-container">
             <img class='bg-image cropped-image'
-                src='https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63e1830bb646bc07630e009b/1675723532190/conductor.png'
-                >
+                src='https://static1.squarespace.com/static/5a6fccf8d74cff4818ad90a2/t/63e1830bb646bc07630e009b/1675723532190/conductor.png'>
             <div class="text-wrapper">
                 <h2 class="text-overlay1"> CONDUCTOR </h2>
             </div>
