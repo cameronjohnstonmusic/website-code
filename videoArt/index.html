@@ -1,0 +1,107 @@
+<body>
+  <script>
+    Squarespace.onInitialize(Y, init1)
+
+    function init1() {
+      var videos = [
+        "https://www.cameronjohnston.xyz/s/yt5sio-args-piece-for-processed-algorthmic-piano-and-video-1080p.mp4",
+        "https://www.cameronjohnston.xyz/s/Screen-Recording-2023-01-26-at-11152-PM-HD-1080p-H264-Proxy-half-size.mov",
+        "https://www.cameronjohnston.xyz/s/Screen-Recording-2023-01-30-at-13338-PM.mov"
+      ]
+      var randomIndexVideo = Math.floor(Math.random() * videos.length)
+      var randomIndexVideo2 = Math.floor(Math.random() * videos.length)
+      var video = videos[randomIndexVideo]
+      var video2 = videos[randomIndexVideo2]
+      var myVideo2 = document.getElementById("myVideo2")
+      var myVideo = document.getElementById("myVideo")
+      myVideo.src = video
+      myVideo2.src = video2
+
+      myVideo.addEventListener("loadedmetadata", function () {
+        console.log(myVideo.duration)
+        if (myVideo.autoplay) {
+          myVideo.play()
+          myVideo.controls = false
+        } else {
+          myVideo.controls = true
+        }
+        myVideo.muted = true
+        myVideo.loop = true
+      })
+
+      myVideo2.addEventListener("loadedmetadata", function () {
+        console.log(myVideo2.duration)
+        if (myVideo2.autoplay) {
+          myVideo2.play()
+          myVideo2.controls = false
+        } else {
+          myVideo2.controls = true
+        }
+        myVideo2.muted = true
+        myVideo2.loop = true
+      })
+    }
+  </script>
+  <style>
+    section {
+      display: grid;
+      place-items: top;
+      align-content: center;
+      text-align: center;
+      min-height: 5vh;
+      display: block;
+
+
+    }
+
+    .image-container {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+
+      transition: all 0.3s ease-in-out;
+    }
+
+    #myVideo {
+      width: 50%;
+      height: auto;
+
+    }
+
+    #myVideo2 {
+      width: 50%;
+      height: auto;
+      transform: translate(99%, -103.125%);
+    }
+
+    /* New CSS for scaling to 16:9 aspect ratio */
+    video {
+      object-fit: cover;
+      width: 50vw;
+      height: 28.125vw;
+    }
+
+    @media (max-aspect-ratio: 16/9) {
+      video {
+        height: 50vh;
+        width: 89.0625vh;
+      }
+    }
+
+    @media (min-aspect-ratio: 16/9) {
+      video {
+        width: 50vw;
+        height: 28.125vw;
+      }
+    }
+  </style>
+  <section>
+
+    <div class="image-container">
+      <video autoplay id="myVideo"></video>
+      <video autoplay id="myVideo2"></video>
+    </div>
+  </section>
+</body>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changing Font for Each Character</title>
+
+</head>
+
+<body>
+    <style>
+        /* Define different fonts */
+        .font1 {
+            font-family: Arial, sans-serif;
+        }
+
+        .font2 {
+            font-family: Times New Roman, serif;
+        }
+
+        .font3 {
+            font-family: Courier New, monospace;
+        }
+
+
+        /* Apply font size to spans */
+        span {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            font-size: 64px;
+        }
+
+        p {
+            white-space: nowrap;
+        }
+    </style>
+    <script>
+        // Array of font classes
+        const fontClasses = ['font1', 'font2', 'font3'];
+
+        // Function to change font class for a single span
+        function changeFontRandomly(span) {
+            const randomIndex = Math.floor(Math.random() * fontClasses.length);
+            span.className = fontClasses[randomIndex];
+
+            // Randomize the interval duration for the next change (between 300ms and 700ms)
+            const randomInterval = Math.floor(Math.random() * (700 - 300 + 1)) + 300;
+            setTimeout(() => changeFontRandomly(span), randomInterval);
+        }
+
+        window.addEventListener('load', () => {
+            const spans = document.querySelectorAll('p span');
+            spans.forEach(span => {
+                changeFontRandomly(span);
+            });
+        });
+    </script>
+
+
+    <p>
+        <span>C</span>
+        <span>A</span>
+        <span>M</span>
+        <span>E</span>
+        <span>R</span>
+        <span>O</span>
+        <span>N</span>
+        <span> </span>
+        <span> </span>
+        <span> </span>
+    </p>
+    <p>
+        <span>J</span>
+        <span>O</span>
+        <span>H</span>
+        <span>N</span>
+        <span>S</span>
+        <span>T</span>
+        <span>O</span>
+        <span>N</span>
+
+    </p>
+</body>
+
+</html>
